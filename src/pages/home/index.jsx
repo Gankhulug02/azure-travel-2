@@ -4,7 +4,6 @@ import Nav from "./nav";
 const Home = () => {
   return (
     <div>
-      Home
       <Nav />
     </div>
   );
