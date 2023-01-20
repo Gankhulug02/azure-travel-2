@@ -1,7 +1,20 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  color: white;
+}
 .App {
   text-align: center;
+  overflow-x: hidden;
 }
 
 .white {
   color: white;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
+a {
+  text-decoration: none;
 }

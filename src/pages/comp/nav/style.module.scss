@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 85px;
+  width: 100%;
+  background-color: transparent;
+  align-items: center;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  button {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  a {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    opacity: 0.7;
+    // line-height: 40px;
+    // padding-top: 20px;
+    height: fit-content;
+  }
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

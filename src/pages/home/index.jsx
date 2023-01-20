@@ -1,10 +1,13 @@
 import React from "react";
-import Nav from "./nav";
+import Bg from "./header/bgImage";
+import Nav from "../comp/nav";
+import Header from "./header";
 
 const Home = () => {
   return (
     <div>
       <Nav />
+      <Header />
     </div>
   );
 };
