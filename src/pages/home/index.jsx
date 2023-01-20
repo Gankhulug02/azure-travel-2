@@ -1,6 +1,6 @@
 import React from "react";
 import Bg from "./header/bgImage";
-import Nav from "../comp/nav";
+import Nav from "../../component/nav";
 import Header from "./header";
 
 const Home = () => {

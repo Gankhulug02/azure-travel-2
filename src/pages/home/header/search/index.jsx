@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import style from "./style.module.scss";
 
@@ -29,7 +30,23 @@ const Search = () => {
             <img src="./images/Person.svg" alt="qwewx" />
             <button>1 Room , 2 Adults </button>
           </div>
-          <button className={style.searchBtn}>Search</button>
+
+          <Button
+            sx={{
+              color: "white",
+              backgroundColor: "white",
+              padding: "12px 45px 12px 45px",
+              borderRadius: "20px",
+              color: "blue",
+              textTransform: "capitalize",
+              ":hover": {
+                bgcolor: "#808080", // theme.palette.primary.main
+                color: "white",
+              },
+            }}
+          >
+            Search
+          </Button>
         </div>
       </div>
     </div>

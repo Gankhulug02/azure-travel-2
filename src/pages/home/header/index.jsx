@@ -1,13 +1,18 @@
 import React from "react";
 import Bg from "./bgImage";
-// import style from "./bgImage";
+import TopCategories from "./Categories";
 import Search from "./search";
+import VacationDestinations from "./vacationDestinations";
 
 const Header = () => {
   return (
-    <div>
+    <div className="vh100">
       <Bg />
-      <Search />
+      <div className="space-between">
+        <Search />
+        <TopCategories />
+        <VacationDestinations />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,25 @@
+.container {
+  margin: 0px 10% 0px 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.destinations {
+  display: flex;
+  gap: 20px;
+}
+.destination {
+  position: relative;
+  img {
+    width: 310px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  p {
+    position: absolute;
+    font-size: 18px;
+    bottom: 20px;
+    left: 20px;
+  }
+}

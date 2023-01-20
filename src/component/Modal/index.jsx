@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import AuthPage from "../../login";
+import AuthPage from "../../pages/login";
 // import Signin from "../../login/signin";
 // import Signup from "../../login/signup";
 import { useState } from "react";
-
+import { Opacity } from "@mui/icons-material";
 const style = {
   position: "absolute",
   top: "50%",
@@ -29,7 +29,7 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen} className="white">
+      <Button onClick={handleOpen} sx={{ color: "white", opacity: "90%" }}>
         Sign In
       </Button>
       <Modal
