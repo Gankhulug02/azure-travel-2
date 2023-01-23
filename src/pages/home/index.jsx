@@ -1,7 +1,7 @@
 import React from "react";
-import Bg from "./header/bgImage";
+// import Bg from "./header/bgImage";
 import Nav from "../../component/nav";
-import Header from "./header";
+import Header from "../../component/header";
 import Offers from "../../component/offers";
 import BrowseByPropertyType from "../../component/BrowseByPrpertType";
 import Connect from "../../component/Connect";
