@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import DateRangePicker from "./calendar";
 import style from "./style.module.scss";
 
 const Search = () => {
@@ -19,13 +20,10 @@ const Search = () => {
         </div>
         <div className={style.right}>
           <div className={style.item}>
-            <img src="./images/Groupcalendar.svg" alt="qwewx" />
-            <button>Check In </button>
+            {/* <img src="./images/Groupcalendar.svg" alt="qwewx" /> */}
+            <DateRangePicker />
           </div>
-          <div className={style.item}>
-            <img src="./images/Groupcalendar.svg" alt="qwewx" />
-            <button>Check Out </button>
-          </div>
+
           <div className={style.item}>
             <img src="./images/Person.svg" alt="qwewx" />
             <button>1 Room , 2 Adults </button>

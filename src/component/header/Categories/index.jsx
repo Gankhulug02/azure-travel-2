@@ -20,7 +20,7 @@ const TopCategories = () => {
       <div className={style.categories}>
         {categories.map((i) => (
           <div>
-            <img src={i.icon} alt="" />
+            <img src={i.icon} alt="" className={style.icon} />
             <p>{i.title}</p>
           </div>
         ))}

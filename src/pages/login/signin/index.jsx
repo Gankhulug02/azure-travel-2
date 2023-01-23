@@ -112,6 +112,11 @@ const SignIn = (props) => {
               type="password"
               id="password"
               autoComplete="password"
+              InputLabelProps={{
+                style: {
+                  color: "green",
+                },
+              }}
             />
             <TextField
               margin="normal"
