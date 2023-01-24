@@ -12,24 +12,58 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
+//Snack
+import Stack from "@mui/material/Stack";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
-const SignUp = (props) => {
+const SignIn = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+  };
+
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
     <div>
+      <Stack spacing={2} sx={{ width: "100%" }}>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            This is a success message!
+          </Alert>
+        </Snackbar>
+        {/* <Alert severity="error">This is an error message!</Alert>
+        <Alert severity="warning">This is a warning message!</Alert>
+        <Alert severity="info">This is an information message!</Alert>
+        <Alert severity="success">This is a success message!</Alert> */}
+      </Stack>
+
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 10,
+            marginTop: 0,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -42,14 +76,23 @@ const SignUp = (props) => {
             {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign Up
+            Sign up
           </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: 0 }}
           >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="UserName"
+              label="User Name"
+              // autoComplete="email"
+              autoFocus
+            />
             <TextField
               margin="normal"
               required
@@ -68,19 +111,32 @@ const SignUp = (props) => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="password"
+              InputLabelProps={{
+                style: {
+                  color: "green",
+                },
+              }}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="repeat password"
+              label="repeat password"
+              type="password"
+              id="repeat-password"
+              autoComplete="repassword"
             />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleClick}
             >
-              Sign Up
+              Sign In
             </Button>
             <Grid container>
               <Grid item xs>
@@ -91,11 +147,11 @@ const SignUp = (props) => {
               <Grid item>
                 <Button
                   onClick={() => {
-                    props.setIsSignIn(true);
+                    props.setIsSignIn(false);
                   }}
                   variant="text"
                 >
-                  Sign In
+                  Sign Up
                 </Button>
               </Grid>
             </Grid>
@@ -106,4 +162,4 @@ const SignUp = (props) => {
   );
 };
 
-export default SignUp;
+export default SignIn;

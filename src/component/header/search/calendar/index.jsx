@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { LocalizationProvider } from "@mui/x-date-pickers-pro";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
+import { color } from "@mui/system";
 
 export default function BasicDateRangePicker() {
   const [value, setValue] = React.useState([null, null]);
@@ -13,6 +14,7 @@ export default function BasicDateRangePicker() {
     <LocalizationProvider
       dateAdapter={AdapterDayjs}
       localeText={{ start: "Check-in", end: "Check-out" }}
+      sx={{ color: "white" }}
     >
       <DateRangePicker
         value={value}

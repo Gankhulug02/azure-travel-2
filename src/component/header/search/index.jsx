@@ -20,7 +20,7 @@ const Search = () => {
         </div>
         <div className={style.right}>
           <div className={style.item}>
-            {/* <img src="./images/Groupcalendar.svg" alt="qwewx" /> */}
+            <img src="./images/Groupcalendar.svg" alt="qwewx" />
             <DateRangePicker />
           </div>
 

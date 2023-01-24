@@ -1,3 +1,4 @@
+import { Box } from "@mui/system";
 import React from "react";
 import style from "./style.module.scss";
 
@@ -15,17 +16,38 @@ const TopCategories = () => {
     { icon: "./images/Beach.svg", title: "Beach" },
   ];
   return (
-    <div className={style.container}>
-      <h1>Top categories</h1>
-      <div className={style.categories}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "40px",
+        ml: "10%",
+        mr: "10%",
+      }}
+    >
+      <Box>
+        <h1>Top categories</h1>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         {categories.map((i) => (
-          <div>
+          <Box>
             <img src={i.icon} alt="" className={style.icon} />
             <p>{i.title}</p>
-          </div>
+          </Box>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
+    // <div className={style.container}>
+    //   <h1>Top categories</h1>
+    //   <div className={style.categories}>
+    //     {categories.map((i) => (
+    //       <div>
+    //         <img src={i.icon} alt="" className={style.icon} />
+    //         <p>{i.title}</p>
+    //       </div>
+    //     ))}
+    //   </div>
+    // </div>
   );
 };
 
