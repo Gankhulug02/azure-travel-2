@@ -18,7 +18,7 @@ const TopCategories = () => {
   return (
     <Box
       sx={{
-        display: "flex",
+        display: { xs: "", md: "flex" },
         flexDirection: "column",
         gap: "40px",
         ml: "10%",
@@ -28,7 +28,13 @@ const TopCategories = () => {
       <Box>
         <h1>Top categories</h1>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: { md: "flex" },
+          justifyContent: "space-between",
+          flexDirection: { sx: "column", md: "row" },
+        }}
+      >
         {categories.map((i) => (
           <Box>
             <img src={i.icon} alt="" className={style.icon} />
