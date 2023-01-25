@@ -1,6 +1,6 @@
-import "./App.css";
+import "./App.scss";
 import { CssBaseline } from "@mui/material";
-import Login from "./pages/login";
+import CategoryDetail from "./pages/categoryDetail";
 import Home from "./pages/home";
 import Nav from "./component/nav/nav";
 
@@ -15,7 +15,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="" element={<Home />} />
-        {/* <Route path="" element={<Login />} /> */}
+        <Route path="/categoryDetail" element={<CategoryDetail />} />
         <Route path="/signedIn" element={<SignedIn />} />
       </Routes>
     </Router>

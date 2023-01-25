@@ -1,5 +1,7 @@
+import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import style from "./style.module.scss";
 
 const TopCategories = () => {
@@ -36,15 +38,19 @@ const TopCategories = () => {
         }}
       >
         {categories.map((i) => (
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <img src={i.icon} alt="" className={style.icon} />
-            <p>{i.title}</p>
+          <Box>
+            <NavLink to="/categoryDetail">
+              <Button
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <img src={i.icon} alt="" className={style.icon} />
+                <p>{i.title}</p>
+              </Button>
+            </NavLink>
           </Box>
         ))}
       </Box>

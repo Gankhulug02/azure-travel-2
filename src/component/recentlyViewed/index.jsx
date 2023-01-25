@@ -1,10 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 import { FaBeer } from "react-icons/fa";
 import { grey } from "@mui/material/colors";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
@@ -28,10 +24,10 @@ const RecentlyViewed = () => {
     },
   ];
   const program = [
-    { icon: "AirplanemodeActiveIcon", text: "4 Flights" },
-    { icon: "ApartmentIcon", text: "1 Hotel" },
-    { icon: "DirectionsCarIcon", text: "2 Transfers" },
-    { icon: "RowingIcon", text: "4 Activities" },
+    { icon: <AirplanemodeActiveIcon />, text: "4 Flights" },
+    { icon: <ApartmentIcon />, text: "1 Hotel" },
+    { icon: <DirectionsCarIcon />, text: "2 Transfers" },
+    { icon: <RowingIcon />, text: "4 Activities" },
   ];
 
   return (
@@ -114,7 +110,7 @@ const RecentlyViewed = () => {
                       alignItems: "center",
                     }}
                   >
-                    <ApartmentIcon />
+                    {i.icon}
                     <Typography sx={{ color: "#a1a1a1" }}>{i.text}</Typography>
                   </Box>
                 ))}
@@ -163,3 +159,4 @@ const RecentlyViewed = () => {
 };
 
 export default RecentlyViewed;
+//
