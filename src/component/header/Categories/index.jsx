@@ -5,15 +5,15 @@ import style from "./style.module.scss";
 const TopCategories = () => {
   const categories = [
     { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/Beach.svg", title: "Beach" },
+    { icon: "./images/cactus.svg", title: "Desert" },
+    { icon: "./images/mountain.svg", title: "Mountains" },
+    { icon: "./images/building.svg", title: "Iconic Cities" },
+    { icon: "./images/house.svg", title: "Houseboats" },
+    { icon: "./images/countryside.svg", title: "Countryside" },
+    { icon: "./images/camping.png", title: "Camping" },
+    { icon: "./images/castle.svg", title: "Castles" },
+    { icon: "./images/skiing.svg", title: "Skiing" },
+    { icon: "./images/Tropical.svg", title: "Tropical" },
   ];
   return (
     <Box
@@ -36,7 +36,13 @@ const TopCategories = () => {
         }}
       >
         {categories.map((i) => (
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <img src={i.icon} alt="" className={style.icon} />
             <p>{i.title}</p>
           </Box>

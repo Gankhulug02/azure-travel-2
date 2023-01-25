@@ -39,9 +39,9 @@ const BrowseByPropertyType = () => {
   return (
     <div className={style.container}>
       <h1>Browse by property type</h1>
-      <div className={style.destinations}>
+      <div className={style.types}>
         {Destinations.map((i) => (
-          <div className={style.destination}>
+          <div className={style.type}>
             <img src={i.img} alt="" />
             <p>
               <b>{i.title}</b>
