@@ -6,7 +6,7 @@ import RowingIcon from "@mui/icons-material/Rowing";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 
-const Popular = () => {
+const Honeymoon = () => {
   const destinations = [
     {
       title: "Bali, Indonesia",
@@ -53,11 +53,13 @@ const Popular = () => {
         display: "flex",
         flexDirection: "column",
         gap: "20px",
-        margin: "0px 0px 0px 10%",
+        margin: "40px 0px 0px 10%",
       }}
     >
       <Box>
-        <Typography variant="h2">Popular Beach Destinations</Typography>
+        <Typography variant="h2" color="black">
+          Honeymoon Freebies Special
+        </Typography>
       </Box>
       <Box
         sx={{
@@ -169,4 +171,4 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default Honeymoon;

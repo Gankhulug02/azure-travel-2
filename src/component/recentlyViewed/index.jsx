@@ -31,7 +31,15 @@ const RecentlyViewed = () => {
   ];
 
   return (
-    <Box sx={{ mx: "10%" }}>
+    <Box
+      sx={{
+        mx: "10%",
+        mt: "300px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+      }}
+    >
       <Typography sx={{ color: "black" }} variant="h2">
         Recently Viewed
       </Typography>
@@ -39,64 +47,60 @@ const RecentlyViewed = () => {
         sx={{
           display: "flex",
           gap: "24px",
-          width: "100%",
-          height: "900px",
-          //   backgroundColor: "black",
+          height: "fit-content",
+          // backgroundColor: "black",
+          overflowX: "scroll",
+          padding: "20px",
         }}
       >
         {viewed.map((i) => (
           <Box
             sx={{
-              width: "fit-content",
-              height: "550px",
-              padding: "10px",
-              backgroundColor: "white",
-              alignItems: "center",
-              borderRadius: "18px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "14px",
               boxShadow: "0px 0px 10px #dbdbdb",
+              //   justifyContent: "space-between",
+              padding: "12px",
+              borderRadius: "18px",
+              height: "fit-content",
+              backgroundColor: "white",
             }}
           >
             <Box
-            //   sx={{ width: "313px", height: "200px", backgroundColor: "white" }}
+              sx={{
+                width: "340px",
+                height: "200px",
+              }}
             >
               <img
                 src={i.img}
                 alt=""
                 style={{
-                  objectFit: "cover",
-                  width: "313px",
-                  height: "200px",
                   borderRadius: "18px",
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
                 }}
               />
             </Box>
-            <Box>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    color: "black",
-                  }}
-                >
-                  <Typography sx={{ color: "black" }} variant="h4">
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              <Box>
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                  <Typography variant="p" sx={{ fontSize: "30px" }}>
                     {i.destination}
                   </Typography>
-                  <Typography sx={{ color: "black" }} variant="h5">
-                    {i.rating}
+                  <Typography variant="p" sx={{ fontSize: "25px" }}>
+                    4.9
                   </Typography>
                 </Box>
-                <Box>
-                  <Typography sx={{ color: "#a1a1a1" }} variant="p">
-                    {i.date}
-                  </Typography>
-                </Box>
+                <Typography variant="p" sx={{ color: "grey" }}>
+                  3 Days 4 Nights
+                </Typography>
               </Box>
               <Box
                 sx={{
                   display: "flex",
-                  //   width: "1280px",
-                  //   backgroundColor: "black",
                   justifyContent: "space-between",
                   height: "50px",
                 }}
@@ -115,6 +119,32 @@ const RecentlyViewed = () => {
                   </Box>
                 ))}
               </Box>
+              <Box>
+                <Typography variant="">
+                  <ul style={{ color: "grey", paddingLeft: "5%" }}>
+                    <li>Tour combo with return airport transfer</li>
+                    <li>City Tour</li>
+                    <li>Curious Corner</li>
+                  </ul>
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", gap: "24px" }}>
+                <Typography
+                  variant="p"
+                  color="black"
+                  sx={{ textDecoration: "line-through" }}
+                >
+                  ₹88,952
+                </Typography>
+                <Box sx={{ display: "flex", gap: "4px", alignItems: "end" }}>
+                  <Typography variant="h5" color="black">
+                    ₹88,952
+                  </Typography>
+                  <Typography variant="p" color="grey">
+                    Per person
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
           </Box>
         ))}
@@ -124,9 +154,10 @@ const RecentlyViewed = () => {
               src="https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJsdWUlMjBtb3VudGFpbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
               alt=""
               style={{
+                boxShadow: "0px 0px 10px #dbdbdb",
                 objectFit: "cover",
                 width: "350px",
-                height: "550px",
+                height: "500px",
                 borderRadius: "18px",
               }}
             />
@@ -141,13 +172,13 @@ const RecentlyViewed = () => {
               }}
             >
               <Typography variant="h5">Summer Bonanza!</Typography>
-              <Typography variant="p">
+              <Typography variant="p" color="white">
                 Enjoy confortable transfers in shared coaches!
               </Typography>
-              <Typography variant="p">
+              <Typography variant="p" color="white">
                 Choose from 5 flights per week{" "}
               </Typography>
-              <Typography variant="p">
+              <Typography variant="p" color="white">
                 Get a free Rapid Antigen Test at selected hotels{" "}
               </Typography>
             </Box>

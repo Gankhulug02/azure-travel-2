@@ -20,7 +20,7 @@ const TopCategories = () => {
   return (
     <Box
       sx={{
-        display: { xs: "", md: "flex" },
+        display: { xs: "flex", md: "flex" },
         flexDirection: "column",
         gap: "40px",
         ml: "10%",
@@ -32,9 +32,12 @@ const TopCategories = () => {
       </Box>
       <Box
         sx={{
-          display: { md: "flex" },
+          display: "flex",
           justifyContent: "space-between",
-          flexDirection: { sx: "column", md: "row" },
+          flexDirection: "row",
+          width: "100%",
+          overflowX: "scroll",
+          // backgroundColor: "black",
         }}
       >
         {categories.map((i) => (
@@ -45,6 +48,8 @@ const TopCategories = () => {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  // backgroundColor: "black",
+                  width: "150px",
                 }}
               >
                 <img src={i.icon} alt="" className={style.icon} />
