@@ -9,7 +9,7 @@ import RecentlyViewed from "../../component/recentlyViewed";
 import Footer from "../../component/footer";
 // import Header from "../../component/header";
 
-const CategoryDetail = () => {
+const CategoryDetail = ({ destinations }) => {
   return (
     <Box>
       <div className="vh100">
@@ -26,7 +26,7 @@ const CategoryDetail = () => {
         >
           <Search />
           <TopCategories />
-          <Popular />
+          <Popular destinations={destinations} />
         </div>
       </div>
       <RecentlyViewed />

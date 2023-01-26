@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import style from "./style.module.scss";
 
 const Offers = () => {
@@ -52,8 +53,9 @@ const Offers = () => {
                   borderRadius: "200px",
                 }}
               >
-                {" "}
-                Book Now{" "}
+                <NavLink to="/DestinationDetail" style={{ color: "white" }}>
+                  Book Now
+                </NavLink>
               </Button>
             </div>
           </div>

@@ -59,7 +59,7 @@ const RecentlyViewed = () => {
               display: "flex",
               flexDirection: "column",
               gap: "14px",
-              boxShadow: "0px 0px 10px #dbdbdb",
+              boxShadow: "0px 0px 10px #00000040",
               //   justifyContent: "space-between",
               padding: "12px",
               borderRadius: "18px",
