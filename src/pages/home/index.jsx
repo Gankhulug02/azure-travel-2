@@ -5,7 +5,6 @@ import Header from "../../component/header";
 import Offers from "../../component/offers";
 import BrowseByPropertyType from "../../component/BrowseByPrpertType";
 import Connect from "../../component/Connect";
-import Footer from "../../component/footer";
 
 const Home = () => {
   return (
@@ -14,7 +13,6 @@ const Home = () => {
       <Offers />
       <BrowseByPropertyType />
       <Connect />
-      <Footer />
     </div>
   );
 };

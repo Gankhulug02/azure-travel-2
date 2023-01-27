@@ -32,7 +32,6 @@ const CategoryDetail = ({ destinations }) => {
       <RecentlyViewed />
       <Packeges />
       <Honeymoon />
-      <Footer />
     </Box>
   );
 };
