@@ -123,7 +123,7 @@ const Bottom = () => {
           >
             <a
               href="https://www.google.com/maps/place/Hotel+Paradise+Busan/@35.1601381,129.1602028,967m/data=!3m1!1e3!4m9!3m8!1s0x35688d42b126ec71:0x8fae28bce37ad7bd!5m2!4m1!1i2!8m2!3d35.1601338!4d129.1646875!16s%2Fg%2F1tdf8_05"
-              target="_blank"
+              target="blank"
               style={{
                 width: "100%",
                 height: "100%",

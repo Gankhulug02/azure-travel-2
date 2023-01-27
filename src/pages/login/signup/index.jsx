@@ -75,9 +75,6 @@ const SignIn = (props) => {
           >
             {/* <LockOutlinedIcon /> */}
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -136,7 +133,7 @@ const SignIn = (props) => {
               sx={{ mt: 3, mb: 2 }}
               onClick={handleClick}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item xs>
@@ -147,11 +144,11 @@ const SignIn = (props) => {
               <Grid item>
                 <Button
                   onClick={() => {
-                    props.setIsSignIn(false);
+                    props.setIsSignIn(true);
                   }}
                   variant="text"
                 >
-                  Sign Up
+                  Sign In
                 </Button>
               </Grid>
             </Grid>

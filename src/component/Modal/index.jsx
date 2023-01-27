@@ -4,8 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AuthPage from "../../pages/login";
-// import Signin from "../../login/signin";
-// import Signup from "../../login/signup";
+
 import { useState } from "react";
 import { Opacity } from "@mui/icons-material";
 const style = {
@@ -25,7 +24,6 @@ export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [isSignIn, setIsSignIn] = useState(true);
 
   return (
     <div>

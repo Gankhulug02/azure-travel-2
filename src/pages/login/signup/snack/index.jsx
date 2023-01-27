@@ -28,7 +28,7 @@ export default function Snackk(handleclick) {
       <Button variant="outlined" onClick={handleClick}>
         Open success snackbar
       </Button>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           This is a success message!
         </Alert>

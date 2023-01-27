@@ -13,12 +13,40 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 //Snack
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
 const SignIn = (props) => {
+  const newLogged = localStorage.getItem("isLogged");
+  const [isLogged, setIsLogged] = useState(newLogged);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const changeEmail = (e) => {
+    setEmail(e.target.value);
+    console.log(e.target.value);
+  };
+  const changePassword = (e) => {
+    setPassword(e.target.value);
+    console.log(e.target.value);
+  };
+  const logIn = () => {
+    console.log("login");
+
+    if (email === "" || password === "") {
+      setOpen(true);
+    } else {
+      // isLogged(true);
+      localStorage.setItem("isLogged", true);
+      navigate("/");
+      console.log(email, password);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -27,11 +55,9 @@ const SignIn = (props) => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -44,13 +70,9 @@ const SignIn = (props) => {
   return (
     <div>
       <Stack spacing={2} sx={{ width: "100%" }}>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert
-            onClose={handleClose}
-            severity="success"
-            sx={{ width: "100%" }}
-          >
-            This is a success message!
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+            This is a Error message!
           </Alert>
         </Snackbar>
         {/* <Alert severity="error">This is an error message!</Alert>
@@ -88,19 +110,11 @@ const SignIn = (props) => {
               margin="normal"
               required
               fullWidth
-              id="UserName"
-              label="User Name"
-              // autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
               id="email"
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={changeEmail}
               autoFocus
             />
             <TextField
@@ -112,21 +126,7 @@ const SignIn = (props) => {
               type="password"
               id="password"
               autoComplete="password"
-              InputLabelProps={{
-                style: {
-                  color: "green",
-                },
-              }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="repeat password"
-              label="repeat password"
-              type="password"
-              id="repeat-password"
-              autoComplete="repassword"
+              onChange={changePassword}
             />
 
             <Button
@@ -134,7 +134,7 @@ const SignIn = (props) => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={handleClick}
+              onClick={logIn}
             >
               Sign In
             </Button>
