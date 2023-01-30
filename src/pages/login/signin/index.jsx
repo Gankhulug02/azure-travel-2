@@ -40,9 +40,10 @@ const SignIn = (props) => {
     if (email === "" || password === "") {
       setOpen(true);
     } else {
-      // isLogged(true);
+      console.log(isLogged);
       localStorage.setItem("isLogged", true);
-      navigate("/");
+      isLogged("true");
+      // navigate("/");
       console.log(email, password);
     }
   };
