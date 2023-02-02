@@ -5,8 +5,6 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AuthPage from "../../pages/login";
 
-import { useState } from "react";
-import { Opacity } from "@mui/icons-material";
 const style = {
   position: "absolute",
   top: "50%",
@@ -20,7 +18,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
+export default function BasicModal({ setIsLogged }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -46,7 +44,7 @@ export default function BasicModal() {
             ) : (
               <Signup setIsSignIn={setIsSignIn} />
             )} */}
-            <AuthPage />
+            <AuthPage handleClose={handleClose} setIsLogged={setIsLogged} />
           </Typography>
         </Box>
       </Modal>

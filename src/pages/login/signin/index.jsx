@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,42 +15,64 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//Snack
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
 const SignIn = (props) => {
-  const newLogged = localStorage.getItem("isLogged");
-  const [isLogged, setIsLogged] = useState(newLogged);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate();
-  const changeEmail = (e) => {
-    setEmail(e.target.value);
-    console.log(e.target.value);
-  };
-  const changePassword = (e) => {
-    setPassword(e.target.value);
-    console.log(e.target.value);
-  };
-  const logIn = () => {
-    console.log("login");
+  const [error, setError] = useState("");
 
-    if (email === "" || password === "") {
-      setOpen(true);
-    } else {
-      console.log(isLogged);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const change = (e) => {
+    // console.log(e.target.name);
+    // console.log(e.target.value);
+    const key = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [key]: value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(user.email);
+    try {
+      const res = await axios.post("http://localhost:8000/signin", {
+        email: user.email,
+        ...user,
+      });
+      props.handleClose();
+      props.setIsLogged("true");
       localStorage.setItem("isLogged", true);
-      isLogged("true");
-      // navigate("/");
-      console.log(email, password);
+      console.log("Success", res.data.user);
+    } catch (err) {
+      console.log("err", err);
+      setError(err.response.data.message);
+      handleOpen();
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const logIn = () => {
+    console.log("login");
+
+    // if (email === "" || password === "") {
+    //   setOpen(true);
+    // } else {
+    //   props.handleClose();
+    //   props.setIsLogged("true");
+    //   localStorage.setItem("isLogged", true);
+    // }
   };
 
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -73,13 +96,9 @@ const SignIn = (props) => {
       <Stack spacing={2} sx={{ width: "100%" }}>
         <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            This is a Error message!
+            {error}
           </Alert>
         </Snackbar>
-        {/* <Alert severity="error">This is an error message!</Alert>
-        <Alert severity="warning">This is a warning message!</Alert>
-        <Alert severity="info">This is an information message!</Alert>
-        <Alert severity="success">This is a success message!</Alert> */}
       </Stack>
 
       <Container component="main" maxWidth="xs">
@@ -103,7 +122,7 @@ const SignIn = (props) => {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 0 }}
           >
@@ -115,7 +134,7 @@ const SignIn = (props) => {
               label="Email Address"
               name="email"
               autoComplete="email"
-              onChange={changeEmail}
+              onChange={change}
               autoFocus
             />
             <TextField
@@ -127,7 +146,7 @@ const SignIn = (props) => {
               type="password"
               id="password"
               autoComplete="password"
-              onChange={changePassword}
+              onChange={change}
             />
 
             <Button
@@ -135,7 +154,8 @@ const SignIn = (props) => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={logIn}
+              // onClick={logIn}
+              onClick={handleSubmit}
             >
               Sign In
             </Button>

@@ -2,7 +2,7 @@ import React from "react";
 import Signin from "./signin";
 import Signup from "./signup";
 import { useState } from "react";
-const AuthPage = ({ logIn }) => {
+const AuthPage = ({ handleClose, setIsLogged }) => {
   const [isSignIn, setIsSignIn] = useState(true);
   //---- ver 1 -----
   //   if (isSignIn == true) {
@@ -15,9 +15,17 @@ const AuthPage = ({ logIn }) => {
   return (
     <>
       {isSignIn ? (
-        <Signin logIn={logIn} setIsSignIn={setIsSignIn} />
+        <Signin
+          handleClose={handleClose}
+          setIsLogged={setIsLogged}
+          setIsSignIn={setIsSignIn}
+        />
       ) : (
-        <Signup setIsSignIn={setIsSignIn} />
+        <Signup
+          handleClose={handleClose}
+          setIsLogged={setIsLogged}
+          setIsSignIn={setIsSignIn}
+        />
       )}
     </>
   );

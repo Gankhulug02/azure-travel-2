@@ -24,9 +24,8 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const logout = () => {
-    console.log("asd");
+    setIsLogged("false");
     localStorage.setItem("isLogged", false);
-    isLogged("false");
   };
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -182,7 +181,7 @@ function ResponsiveAppBar() {
                 </Menu>
               </>
             ) : (
-              <BasicModal />
+              <BasicModal setIsLogged={setIsLogged} />
             )}
           </Box>
         </Toolbar>
