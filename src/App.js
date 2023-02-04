@@ -18,10 +18,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path="" element={<Home destinations={destinations} />} />
-        <Route
+        {/* <Route
           path="/categoryDetail"
           element={<CategoryDetail destinations={destinations} />}
-        />
+        /> */}
         <Route path="/DestinationDetail" element={<DestinationDetail />} />
         <Route path="/signedIn" element={<SignedIn />} />
       </Routes>

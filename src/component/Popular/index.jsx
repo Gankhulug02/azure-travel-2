@@ -6,13 +6,17 @@ import RowingIcon from "@mui/icons-material/Rowing";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 
-const Popular = ({ destinations }) => {
+const Popular = ({ isCategoryDetail, destinations }) => {
   const program = [
     { icon: <AirplanemodeActiveIcon />, text: "4 Flights" },
     { icon: <ApartmentIcon />, text: "1 Hotel" },
     { icon: <DirectionsCarIcon />, text: "2 Transfers" },
     { icon: <RowingIcon />, text: "4 Activities" },
   ];
+  const filteredDestinations = destinations.filter(
+    (destiantion) => destiantion.category == isCategoryDetail
+  );
+  console.log(filteredDestinations);
   return (
     <Box
       sx={{
@@ -34,7 +38,7 @@ const Popular = ({ destinations }) => {
           padding: "20px",
         }}
       >
-        {destinations.map((i) => (
+        {filteredDestinations.map((i) => (
           <Box
             sx={{
               display: "flex",
@@ -69,7 +73,8 @@ const Popular = ({ destinations }) => {
               <Box>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                   <Typography variant="p" sx={{ fontSize: "30px" }}>
-                    {i.title}
+                    {/* {i.title} */}
+                    {isCategoryDetail}
                   </Typography>
                   <Typography variant="p" sx={{ fontSize: "25px" }}>
                     4.9

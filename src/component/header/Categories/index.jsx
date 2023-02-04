@@ -4,12 +4,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./style.module.scss";
 
-const TopCategories = () => {
+const TopCategories = ({ setIsCategoryDetail, isCategoryDetail }) => {
   const categories = [
+    { icon: "./images/Beach.svg", title: "All" },
     { icon: "./images/Beach.svg", title: "Beach" },
     { icon: "./images/cactus.svg", title: "Desert" },
     { icon: "./images/mountain.svg", title: "Mountains" },
-    { icon: "./images/building.svg", title: "Iconic Cities" },
+    { icon: "./images/building.svg", title: "Cities" },
     { icon: "./images/house.svg", title: "Houseboats" },
     { icon: "./images/countryside.svg", title: "Countryside" },
     { icon: "./images/camping.png", title: "Camping" },
@@ -41,21 +42,25 @@ const TopCategories = () => {
         }}
       >
         {categories.map((i) => (
-          <Box>
-            <NavLink to="/categoryDetail">
-              <Button
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  // backgroundColor: "black",
-                  width: "150px",
-                }}
-              >
-                <img src={i.icon} alt="" className={style.icon} />
-                <p>{i.title}</p>
-              </Button>
-            </NavLink>
+          <Box
+            onClick={() => {
+              setIsCategoryDetail(i.title);
+            }}
+          >
+            {/* <NavLink to="/categoryDetail"> */}
+            <Button
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                // backgroundColor: "black",
+                width: "150px",
+              }}
+            >
+              <img src={i.icon} alt="" className={style.icon} />
+              <p>{i.title}</p>
+            </Button>
+            {/* </NavLink> */}
           </Box>
         ))}
       </Box>

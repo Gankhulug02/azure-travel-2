@@ -9,7 +9,11 @@ import RecentlyViewed from "../../component/recentlyViewed";
 import Footer from "../../component/footer";
 // import Header from "../../component/header";
 
-const CategoryDetail = ({ destinations }) => {
+const CategoryDetail = ({
+  destinations,
+  isCategoryDetail,
+  setIsCategoryDetail,
+}) => {
   return (
     <Box>
       <div className="vh100">
@@ -25,8 +29,14 @@ const CategoryDetail = ({ destinations }) => {
           }}
         >
           <Search />
-          <TopCategories />
-          <Popular destinations={destinations} />
+          <TopCategories
+            isCategoryDetail={isCategoryDetail}
+            setIsCategoryDetail={setIsCategoryDetail}
+          />
+          <Popular
+            isCategoryDetail={isCategoryDetail}
+            destinations={destinations}
+          />
         </div>
       </div>
       <RecentlyViewed />

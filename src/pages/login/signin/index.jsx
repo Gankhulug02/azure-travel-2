@@ -46,7 +46,7 @@ const SignIn = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(user.email);
+    // console.log(user.email);
     try {
       const res = await axios.post("http://localhost:8000/signin", {
         email: user.email,
@@ -55,7 +55,9 @@ const SignIn = (props) => {
       props.handleClose();
       props.setIsLogged("true");
       localStorage.setItem("isLogged", true);
-      console.log("Success", res.data.user);
+      localStorage.setItem("user", res.data.user.name);
+      localStorage.setItem("userId", res.data.user.id);
+      console.log("Success", res.data.user.name);
     } catch (err) {
       console.log("err", err);
       setError(err.response.data.message);

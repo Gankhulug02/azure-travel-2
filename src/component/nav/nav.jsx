@@ -8,12 +8,14 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
+import { deepPurple, blue } from "@mui/material/colors";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import BasicModal from "../Modal";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -21,11 +23,17 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
   const newLogged = localStorage.getItem("isLogged");
   const [isLogged, setIsLogged] = useState(newLogged);
+  // const [isLogged, setIsLogged] = useState(newLogged);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const userName = localStorage.getItem("user");
+
+  const navigate = useNavigate();
+
   const logout = () => {
     setIsLogged("false");
     localStorage.setItem("isLogged", false);
+    localStorage.setItem("user", null);
   };
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -40,6 +48,15 @@ function ResponsiveAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleClick = (value) => {
+    console.log(value);
+    if (value === "Logout") {
+      logout();
+    } else {
+      navigate(value);
+    }
   };
 
   return (
@@ -143,12 +160,9 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0, display: "flex" }}>
             {isLogged === "true" ? (
               <>
-                <Tooltip title="Open settings">
+                <Tooltip title={userName}>
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
+                    <Avatar sx={{ bgcolor: blue[500] }}>{userName[0]}</Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -170,7 +184,9 @@ function ResponsiveAppBar() {
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                       <Typography
-                        onClick={logout}
+                        onClick={() => {
+                          handleClick(setting);
+                        }}
                         textAlign="center"
                         sx={{ color: "grey" }}
                       >
