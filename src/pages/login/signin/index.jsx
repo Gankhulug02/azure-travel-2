@@ -9,7 +9,6 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -18,12 +17,17 @@ import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+//UserContext
+import { useContext } from "react";
+import { UserContext } from "../../../context/user";
 
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = React.useState(false);
   const [error, setError] = useState("");
+
+  const { setIsLogged, setIsSignIn } = useContext(UserContext);
 
   const handleOpen = () => {
     setOpen(true);
@@ -53,7 +57,7 @@ const SignIn = (props) => {
         ...user,
       });
       props.handleClose();
-      props.setIsLogged("true");
+      setIsLogged("true");
       localStorage.setItem("isLogged", true);
       localStorage.setItem("user", res.data.user.name);
       localStorage.setItem("userId", res.data.user.id);
@@ -116,9 +120,7 @@ const SignIn = (props) => {
           <Avatar
             sx={{ m: 1, bgcolor: "secondary.main" }}
             src="https://images.unsplash.com/photo-1563694983011-6f4d90358083?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4000&q=80"
-          >
-            {/* <LockOutlinedIcon /> */}
-          </Avatar>
+          ></Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -170,7 +172,7 @@ const SignIn = (props) => {
               <Grid item>
                 <Button
                   onClick={() => {
-                    props.setIsSignIn(false);
+                    setIsSignIn(false);
                   }}
                   variant="text"
                 >

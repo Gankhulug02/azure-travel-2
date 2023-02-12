@@ -16,17 +16,18 @@ import AdbIcon from "@mui/icons-material/Adb";
 import BasicModal from "../Modal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/user";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-  const newLogged = localStorage.getItem("isLogged");
-  const [isLogged, setIsLogged] = useState(newLogged);
-  // const [isLogged, setIsLogged] = useState(newLogged);
+  // isUserLogged
+  const { isLogged, setIsLogged, userName } = useContext(UserContext);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const userName = localStorage.getItem("user");
 
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ function ResponsiveAppBar() {
     setIsLogged("false");
     localStorage.setItem("isLogged", false);
     localStorage.setItem("user", null);
+    localStorage.setItem("userId", null);
   };
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -197,7 +199,7 @@ function ResponsiveAppBar() {
                 </Menu>
               </>
             ) : (
-              <BasicModal setIsLogged={setIsLogged} />
+              <BasicModal />
             )}
           </Box>
         </Toolbar>

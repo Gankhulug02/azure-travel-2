@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ setIsLogged }) {
+export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -44,7 +44,7 @@ export default function BasicModal({ setIsLogged }) {
             ) : (
               <Signup setIsSignIn={setIsSignIn} />
             )} */}
-            <AuthPage handleClose={handleClose} setIsLogged={setIsLogged} />
+            <AuthPage handleClose={handleClose} />
           </Typography>
         </Box>
       </Modal>

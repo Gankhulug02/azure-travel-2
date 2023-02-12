@@ -14,6 +14,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
+//UserContext
+import { useContext } from "react";
+import { UserContext } from "../../../context/user";
 //Snack
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
@@ -23,6 +26,8 @@ const SignIn = (props) => {
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
+
+  const { setIsSignIn } = useContext(UserContext);
 
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("");
@@ -71,7 +76,7 @@ const SignIn = (props) => {
         // ...user,
       });
       // props.handleClose();
-      props.setIsSignIn(true);
+      setIsSignIn(true);
       console.log("RES", res);
     } catch (err) {
       console.log("err", err);
@@ -193,7 +198,7 @@ const SignIn = (props) => {
               <Grid item>
                 <Button
                   onClick={() => {
-                    props.setIsSignIn(true);
+                    setIsSignIn(true);
                   }}
                   variant="text"
                 >
