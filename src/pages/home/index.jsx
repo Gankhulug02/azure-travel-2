@@ -9,6 +9,7 @@ import Connect from "../../component/Connect";
 //////////////////////////////////////////////
 import { destinations } from "../../data/destination";
 import CategoryDetail from "../categoryDetail";
+import BookedSideBar from "../../component/BookedSideBar";
 
 const Home = () => {
   const [isCategoryDetail, setIsCategoryDetail] = useState("All");
@@ -21,6 +22,7 @@ const Home = () => {
           setIsCategoryDetail={setIsCategoryDetail}
         />
         <Offers />
+        <BookedSideBar />
         <BrowseByPropertyType />
         <Connect />
       </div>

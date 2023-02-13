@@ -52,7 +52,7 @@ const SignIn = (props) => {
     event.preventDefault();
     // console.log(user.email);
     try {
-      const res = await axios.post("http://localhost:8000/signin", {
+      const res = await axios.post("http://localhost:8000/users/signin", {
         email: user.email,
         ...user,
       });

@@ -31,6 +31,7 @@ function ResponsiveAppBar() {
 
   const navigate = useNavigate();
 
+  const sideBar = () => {};
   const logout = () => {
     setIsLogged("false");
     localStorage.setItem("isLogged", false);
@@ -56,6 +57,8 @@ function ResponsiveAppBar() {
     console.log(value);
     if (value === "Logout") {
       logout();
+    } else if (value === "BookList") {
+      sideBar();
     } else {
       navigate(value);
     }
@@ -68,12 +71,6 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon
-            sx={{
-              display: { xs: "none", md: "flex" },
-              mr: 1,
-            }}
-          /> */}
           <Typography
             variant="h6"
             noWrap
@@ -163,7 +160,10 @@ function ResponsiveAppBar() {
             {isLogged === "true" ? (
               <>
                 <Tooltip title={userName}>
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton
+                    onClick={handleOpenUserMenu}
+                    sx={{ width: "100%", height: "100%" }}
+                  >
                     <Avatar sx={{ bgcolor: blue[500] }}>{userName[0]}</Avatar>
                   </IconButton>
                 </Tooltip>
