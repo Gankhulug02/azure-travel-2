@@ -57,6 +57,8 @@ function ResponsiveAppBar() {
     console.log(value);
     if (value === "Logout") {
       logout();
+    } else if (value === "BookList") {
+      sideBar();
     } else {
       navigate(value);
     }
