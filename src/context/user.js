@@ -4,7 +4,7 @@ import { createContext } from "react";
 
 export const UserContext = createContext(null);
 
-const User = ({ children }) => {
+const UserProvider = ({ children }) => {
   const newLogged = localStorage.getItem("isLogged");
   const [isLogged, setIsLogged] = useState(newLogged);
   const userName = localStorage.getItem("user");
@@ -28,6 +28,6 @@ const User = ({ children }) => {
   );
 };
 
-export default User;
+export default UserProvider;
 
 //test

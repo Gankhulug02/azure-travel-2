@@ -4,24 +4,9 @@ import { Box } from "@mui/system";
 import { Button, Typography, Link } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import ClearIcon from "@mui/icons-material/Clear";
-const BookedSideBar = ({}) => {
-  const data = [
-    {
-      img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
-      name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
-      price: "222",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
-      name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
-      price: "222",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
-      name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
-      price: "222",
-    },
-  ];
+import axios from "axios";
+import { ConstructionOutlined } from "@mui/icons-material";
+const BookedSideBar = () => {
   // const data = [
   //   {
   //     img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
@@ -30,18 +15,42 @@ const BookedSideBar = ({}) => {
   //   },
   //   {
   //     img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
-  //     name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+  //     name: "Bangkok Marriott Marquis Queen’s Park (SHA Plus+)",
   //     price: "222",
   //   },
   //   {
   //     img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
-  //     name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+  //     name: "The Grand Palace",
   //     price: "222",
   //   },
   // ];
-  const deleteWish = (e) => {
-    console.log("asd", e);
+
+  const [dataChange, setDataChange] = useState(null);
+
+  //delete wishlist start
+  const deleteWish = async (e) => {
+    console.log(e);
+    try {
+      const res = await axios.delete(`http://localhost:8000/wishlist/${e}`, {});
+      console.log("Success", res);
+    } catch (err) {
+      console.log("err", err);
+    }
   };
+  //delete wishlist end
+
+  //wishlist data avah hesegiin start
+  axios
+    .get("http://localhost:8000/wishlist")
+    .then(function (response) {
+      const data = response.data.data.wishlist;
+      setDataChange(data);
+    })
+    .catch(function (error) {
+      console.log("err", error);
+    });
+  //wishlist data avah hesegiin end
+
   const [sideBar, setSideBar] = useState(true);
   const handleCLose = () => setSideBar(true);
   // const handleOpen = () => setSideBar(false);
@@ -101,7 +110,6 @@ const BookedSideBar = ({}) => {
           </Box>
           <Box
             sx={{
-              // backgroundColor: "black",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -110,8 +118,9 @@ const BookedSideBar = ({}) => {
           >
             {/* sagsalsan buteegdhuun ehlel */}
             <Box>
-              {data.map((data) => (
+              {dataChange.map((data) => (
                 <Box
+                  key={data.id}
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -131,7 +140,7 @@ const BookedSideBar = ({}) => {
                     }}
                   >
                     <Button
-                      onClick={() => {}}
+                      onClick={() => deleteWish(data.id)}
                       sx={{
                         position: "absolute",
                         left: "-10px",
@@ -174,14 +183,14 @@ const BookedSideBar = ({}) => {
                       }}
                     >
                       <Typography
-                        noWrap="true"
+                        noWrap={true}
                         variant="h5"
                         sx={{
                           width: "100%",
                           color: "black",
                         }}
                       >
-                        Swissotel Bangkok Ratchada (SHA Extra Plus)
+                        {data.name}
                       </Typography>
                     </Box>
                     <Box
