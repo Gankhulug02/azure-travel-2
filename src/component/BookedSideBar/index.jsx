@@ -1,42 +1,232 @@
 import React from "react";
 import { useState } from "react";
 import { Box } from "@mui/system";
-import { Button } from "@mui/material";
+import { Button, Typography, Link } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import ClearIcon from "@mui/icons-material/Clear";
-const BookedSideBar = () => {
-  const [isSideBar, setIsSideBar] = useState(false);
+const BookedSideBar = ({}) => {
+  const data = [
+    {
+      img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
+      name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+      price: "222",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
+      name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+      price: "222",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
+      name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+      price: "222",
+    },
+  ];
+  // const data = [
+  //   {
+  //     img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
+  //     name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+  //     price: "222",
+  //   },
+  //   {
+  //     img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
+  //     name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+  //     price: "222",
+  //   },
+  //   {
+  //     img: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80",
+  //     name: "Swissotel Bangkok Ratchada (SHA Extra Plus)",
+  //     price: "222",
+  //   },
+  // ];
+  const deleteWish = (e) => {
+    console.log("asd", e);
+  };
+  const [sideBar, setSideBar] = useState(true);
+  const handleCLose = () => setSideBar(true);
+  // const handleOpen = () => setSideBar(false);
+  let [teenCount, setTeenCount] = useState(0);
+  const teenInc = () => setTeenCount((teenCount += 1));
+  const teenDec = () => {
+    if (teenCount > 0) {
+      setTeenCount((teenCount -= 1));
+    }
+  };
+  let [adultCount, setAdultCount] = useState(0);
+  const adultInc = () => setAdultCount((adultCount += 1));
+  const adultDec = () => {
+    if (adultCount > 0) {
+      setAdultCount((adultCount -= 1));
+    }
+  };
   return (
     <>
-      {isSideBar ? (
+      <Button
+        onClick={() => setSideBar(!sideBar)}
+        sx={{
+          width: "fit-content",
+          height: "fit-content",
+          backgroundColor: "blue",
+        }}
+      >
+        <ShoppingBasketIcon sx={{ color: "white" }} />
+      </Button>
+
+      {sideBar ? (
+        <Box sx={{ display: "none" }}></Box>
+      ) : (
         <Box
           sx={{
             position: "absolute",
-            width: "400px",
+            zIndex: "2",
+            width: "450px",
             height: "100vh",
             right: "0",
             top: "0",
             backgroundColor: "white",
-            boxShadow: "0px 0px 20px #7F7F7F",
+            boxShadow: "0px 0px 20px black",
           }}
         >
-          <Button onClick={() => setIsSideBar(false)}>
-            <ClearIcon />
-          </Button>
-          <Box>
-            <Box
-              sx={{ width: "100%", height: "50px", backgroundColor: "grey" }}
-            ></Box>
-          </Box>
-        </Box>
-      ) : (
-        <Box sx={{ position: "absolute", right: "0", top: "50%" }}>
-          <Button
-            sx={{ width: "50px", height: "50px", backgroundColor: "#4E55FF" }}
-            onClick={() => setIsSideBar(true)}
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              height: "5%",
+              alignItems: "center",
+            }}
           >
-            <ShoppingBasketIcon sx={{ color: "white" }} />
-          </Button>
+            <Button onClick={handleCLose}>
+              <ClearIcon />
+            </Button>
+          </Box>
+          <Box
+            sx={{
+              // backgroundColor: "black",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: "95%",
+            }}
+          >
+            {/* sagsalsan buteegdhuun ehlel */}
+            <Box>
+              {data.map((data) => (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    padding: "20px 10px",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "150px",
+                    // backgroundColor: "#e6e6e6",
+                    borderBottom: "1px solid grey",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "40%",
+                      height: "100%",
+                    }}
+                  >
+                    <Button
+                      onClick={() => {}}
+                      sx={{
+                        position: "absolute",
+                        left: "-10px",
+                        top: "-10px",
+                        minWidth: "0px",
+                        width: "20px",
+                        height: "20px",
+                        borderRadius: "200px",
+                        backgroundColor: "grey",
+                        color: "white",
+                        fontSize: "5px",
+                      }}
+                    >
+                      <ClearIcon sx={{ fontSize: "10px" }} />
+                    </Button>
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                      src={data.img}
+                      alt=""
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "55%",
+                      height: "100%",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        maxWidth: "100%",
+                        // height: "50px",
+                        // backgroundColor: "grey",
+                      }}
+                    >
+                      <Typography
+                        noWrap="true"
+                        variant="h5"
+                        sx={{
+                          width: "100%",
+                          color: "black",
+                        }}
+                      >
+                        Swissotel Bangkok Ratchada (SHA Extra Plus)
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        // backgroundColor: "black",
+                      }}
+                    >
+                      <Box>
+                        <Typography variant="h5" sx={{ color: "black" }}>
+                          {data.price}$
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+            {/* sagsalsan buteegdhuun tugsgul */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                height: "80px",
+              }}
+            >
+              <Button
+                href="/checkout"
+                target="blank"
+                sx={{
+                  width: "50%",
+                  height: "50px",
+                  backgroundColor: "blue",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "blue",
+                  },
+                }}
+              >
+                Checkout
+              </Button>
+            </Box>
+          </Box>
         </Box>
       )}
     </>
@@ -44,3 +234,94 @@ const BookedSideBar = () => {
 };
 
 export default BookedSideBar;
+
+// <Box
+// sx={{
+//   display: "flex",
+//   justifyContent: "space-between",
+//   gap: "10px",
+//   width: "120px",
+// }}
+// >
+// <Typography variant="p" sx={{ color: "black" }}>
+//   Adult
+// </Typography>
+// <Box
+//   sx={{
+//     display: "flex",
+//     gap: "5px",
+//     alignItems: "center",
+//   }}
+// >
+//   <Button
+//     onClick={adultDec}
+//     sx={{
+//       minWidth: "0px",
+//       minHeight: "0px",
+//       width: "20px",
+//       height: "20px",
+//       border: "1px solid grey",
+//     }}
+//   >
+//     -
+//   </Button>
+//   <Typography variant="p">{adultCount}</Typography>
+//   <Button
+//     onClick={adultInc}
+//     sx={{
+//       minWidth: "0px",
+//       minHeight: "0px",
+//       width: "20px",
+//       height: "20px",
+//       border: "1px solid grey",
+//     }}
+//   >
+//     +
+//   </Button>
+// </Box>
+// </Box>
+// <Box
+// sx={{
+//   display: "flex",
+//   justifyContent: "space-between",
+//   gap: "10px",
+//   width: "120px",
+// }}
+// >
+// <Typography variant="p" sx={{ color: "black" }}>
+//   Teen
+// </Typography>
+// <Box
+//   sx={{
+//     display: "flex",
+//     gap: "5px",
+//     alignItems: "center",
+//   }}
+// >
+//   <Button
+//     onClick={teenDec}
+//     sx={{
+//       minWidth: "0px",
+//       minHeight: "0px",
+//       width: "20px",
+//       height: "20px",
+//       border: "1px solid grey",
+//     }}
+//   >
+//     -
+//   </Button>
+//   <Typography variant="p">{teenCount}</Typography>
+//   <Button
+//     onClick={teenInc}
+//     sx={{
+//       minWidth: "0px",
+//       minHeight: "0px",
+//       width: "20px",
+//       height: "20px",
+//       border: "1px solid grey",
+//     }}
+//   >
+//     +
+//   </Button>
+// </Box>
+// </Box>
