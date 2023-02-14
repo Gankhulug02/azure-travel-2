@@ -16,7 +16,7 @@ function App() {
     <User>
       <Router>
         <CssBaseline />
-        <Nav />ç
+        <Nav />
         <Routes>
           <Route path="" element={<Home destinations={destinations} />} />
           <Route path="/DestinationDetail" element={<DestinationDetail />} />
