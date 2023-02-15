@@ -18,6 +18,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/user";
+import BookedSideBar from "../BookedSideBar";
+import TemporaryDrawer from "../BookedSideBar";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -155,7 +157,6 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0, display: "flex" }}>
             {isLogged === "true" ? (
               <>
@@ -196,6 +197,8 @@ function ResponsiveAppBar() {
                       </Typography>
                     </MenuItem>
                   ))}
+                  <TemporaryDrawer />
+                  {/* <BookedSideBar /> */}
                 </Menu>
               </>
             ) : (
