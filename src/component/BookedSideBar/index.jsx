@@ -202,10 +202,13 @@ export default function TemporaryDrawer() {
             sx={{
               width: "50%",
               height: "50px",
-              backgroundColor: "blue",
-              color: "white",
+              backgroundColor: "white",
+              borderRadius: "200px",
+              color: "black",
+              border: "1px solid black",
               "&:hover": {
-                backgroundColor: "blue",
+                backgroundColor: "black",
+                color: "white",
               },
             }}
           >
