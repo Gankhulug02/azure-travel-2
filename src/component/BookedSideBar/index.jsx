@@ -61,19 +61,30 @@ export default function TemporaryDrawer() {
         height: "calc(100vh - 60px)",
       }}
       role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
-      // onKeyDown={toggleDrawer(anchor, false)}
     >
       <Box
         sx={{
           display: "flex",
-          justifyContent: "end",
+          // justifyContent: "end",
           width: "100%",
           height: "50px",
+          // backgroundColor: "black",
         }}
       >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h6" sx={{ color: "black" }}>
+            YOUR WISHLIST
+          </Typography>
+        </Box>
         <Button onClick={toggleDrawer(anchor, false)}>
-          <ClearIcon />
+          <ClearIcon sx={{ color: "black" }} />
         </Button>
       </Box>
       <Box
@@ -106,23 +117,6 @@ export default function TemporaryDrawer() {
                   height: "100%",
                 }}
               >
-                <Button
-                  onClick={() => deleteWish(data.id)}
-                  sx={{
-                    position: "absolute",
-                    left: "-10px",
-                    top: "-10px",
-                    minWidth: "0px",
-                    width: "20px",
-                    height: "20px",
-                    borderRadius: "200px",
-                    backgroundColor: "grey",
-                    color: "white",
-                    fontSize: "5px",
-                  }}
-                >
-                  <ClearIcon sx={{ fontSize: "10px" }} />
-                </Button>
                 <img
                   style={{
                     width: "100%",
@@ -136,6 +130,7 @@ export default function TemporaryDrawer() {
               <Box
                 sx={{
                   display: "flex",
+                  gap: "5px",
                   flexDirection: "column",
                   width: "55%",
                   height: "100%",
@@ -149,10 +144,10 @@ export default function TemporaryDrawer() {
                 >
                   <Typography
                     noWrap={true}
-                    variant="h5"
+                    variant="h7"
                     sx={{
                       width: "100%",
-                      color: "black",
+                      color: "#899499",
                     }}
                   >
                     {data.name}
@@ -165,11 +160,28 @@ export default function TemporaryDrawer() {
                   }}
                 >
                   <Box>
-                    <Typography variant="h5" sx={{ color: "black" }}>
+                    <Typography variant="h6" sx={{ color: "black" }}>
                       {data.price}$
                     </Typography>
                   </Box>
                 </Box>
+                <Button
+                  onClick={() => deleteWish(data.id)}
+                  sx={{
+                    width: "80px",
+                    color: "black",
+                    backgroundColor: "transparent",
+                    borderRadius: "0px  ",
+                    borderBottom: "1px solid black",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      scale: "1.03",
+                    },
+                  }}
+                >
+                  {/* <ClearIcon sx={{ fontSize: "10px" }} /> */}
+                  Remove
+                </Button>
               </Box>
             </Box>
           ))}
