@@ -172,6 +172,7 @@ export default function TemporaryDrawer() {
                     color: "black",
                     backgroundColor: "transparent",
                     borderRadius: "0px  ",
+                    padding: "1px",
                     borderBottom: "1px solid black",
                     "&:hover": {
                       backgroundColor: "transparent",
