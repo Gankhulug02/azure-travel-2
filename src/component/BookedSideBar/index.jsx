@@ -122,6 +122,7 @@ export default function TemporaryDrawer() {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
+                    borderRadius: "5px",
                   }}
                   src={data.img}
                   alt=""

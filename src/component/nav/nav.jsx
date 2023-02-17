@@ -69,7 +69,7 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: "primary", boxShadow: "none" }}
+      sx={{ backgroundColor: "transparent", boxShadow: "none" }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -84,7 +84,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "black",
               textDecoration: "none",
             }}
           >
@@ -151,7 +151,11 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                }}
               >
                 {page}
               </Button>
@@ -191,7 +195,7 @@ function ResponsiveAppBar() {
                           handleClick(setting);
                         }}
                         textAlign="center"
-                        sx={{ color: "grey" }}
+                        sx={{ color: "black" }}
                       >
                         {setting}
                       </Typography>
