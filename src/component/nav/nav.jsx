@@ -18,7 +18,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/user";
-import BookedSideBar from "../BookedSideBar";
 import TemporaryDrawer from "../BookedSideBar";
 
 const pages = ["Products", "Pricing", "Blog"];
@@ -27,13 +26,17 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
   // isUserLogged
   const { isLogged, setIsLogged, userName } = useContext(UserContext);
-
+  const URL = "http://localhost:8000/wishlist";
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [isSideBar, setIsSideBar] = React.useState(false);
 
   const navigate = useNavigate();
 
-  const sideBar = () => {};
+  const sideBar = () => {
+    setIsSideBar(!isSideBar);
+    console.log(isSideBar);
+  };
   const logout = () => {
     setIsLogged("false");
     localStorage.setItem("isLogged", false);
@@ -161,6 +164,7 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
+          <TemporaryDrawer sideBar={sideBar} isSideBar={isSideBar} URL={URL} />
           <Box sx={{ flexGrow: 0, display: "flex" }}>
             {isLogged === "true" ? (
               <>
@@ -201,8 +205,6 @@ function ResponsiveAppBar() {
                       </Typography>
                     </MenuItem>
                   ))}
-                  <TemporaryDrawer />
-                  {/* <BookedSideBar /> */}
                 </Menu>
               </>
             ) : (
