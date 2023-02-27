@@ -10,8 +10,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { Typography } from "@mui/material";
 
 // URL = axios hiih API
-// isSideBar = true false iig toggle ddog function
-// sideBat = boolean utga aguulah huvisagch
+// isSideBar =  boolean utga aguulah huvisagch
+// sideBar = isSideBar true false iig toggle ddog function
 
 export default function TemporaryDrawer({ isSideBar, sideBar, URL }) {
   const [dataChange, setDataChange] = useState([]);

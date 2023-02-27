@@ -30,13 +30,12 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [isSideBar, setIsSideBar] = React.useState(false);
+  const sideBar = () => {
+    setIsSideBar(!isSideBar);
+  };
 
   const navigate = useNavigate();
 
-  const sideBar = () => {
-    setIsSideBar(!isSideBar);
-    console.log(isSideBar);
-  };
   const logout = () => {
     setIsLogged("false");
     localStorage.setItem("isLogged", false);
