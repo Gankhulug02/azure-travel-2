@@ -50,7 +50,6 @@ const SignIn = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log(user.email);
     try {
       const res = await axios.post("http://localhost:8000/users/signin", {
         email: user.email,

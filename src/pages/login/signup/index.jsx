@@ -72,7 +72,7 @@ const SignIn = (props) => {
         name: user.name,
         email: user.email,
         password: user.password,
-        role: "user",
+        // role: "user",
         // ...user,
       });
       // props.handleClose();
