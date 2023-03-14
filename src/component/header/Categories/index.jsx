@@ -18,6 +18,7 @@ const TopCategories = ({ setIsCategoryDetail, isCategoryDetail }) => {
       console.log("err", err);
     }
   };
+
   useEffect(() => {
     getData();
   }, []);

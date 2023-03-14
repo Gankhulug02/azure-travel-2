@@ -58,9 +58,9 @@ const SignIn = (props) => {
       props.handleClose();
       setIsLogged("true");
       localStorage.setItem("isLogged", true);
-      localStorage.setItem("user", res.data.user.name);
-      localStorage.setItem("userId", res.data.user.id);
-      console.log("Success", res.data.user.name);
+      console.log(res.data.user);
+      localStorage.setItem("user", res.data.user);
+      localStorage.setItem("userId", res.data.id);
     } catch (err) {
       console.log("err", err);
       setError(err.response.data.message);

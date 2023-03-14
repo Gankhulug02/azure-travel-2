@@ -60,7 +60,7 @@ const VacationDestinations = () => {
       <h1>Top Vacation Destination</h1>
       <div className={style.destinations}>
         {dataChange.map((i) => (
-          <div className={style.destination}>
+          <div key={i.id} className={style.destination}>
             <img src={i.images} alt="" />
             <p>
               <b>{i.title}</b>

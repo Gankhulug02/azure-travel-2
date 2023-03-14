@@ -30,9 +30,11 @@ export default function TemporaryDrawer({ isSideBar, sideBar, URL }) {
 
   //wishlist data avah hesegiin ehlel
   const getData = async () => {
+    const userId = localStorage.getItem("userId");
     try {
-      const res = await axios.get(URL);
-      const data = res.data.data.wishlist;
+      const res = await axios.get(`http://localhost:8000/wishlist/${userId}`);
+      const data = res.data.data;
+      console.log(userId);
       setCount(data.length);
       setDataChange(data);
     } catch (error) {
@@ -116,7 +118,7 @@ export default function TemporaryDrawer({ isSideBar, sideBar, URL }) {
                     objectFit: "cover",
                     borderRadius: "5px",
                   }}
-                  src={data.img}
+                  src={data.images}
                   alt=""
                 />
               </Box>
@@ -143,7 +145,7 @@ export default function TemporaryDrawer({ isSideBar, sideBar, URL }) {
                       color: "#899499",
                     }}
                   >
-                    {data.name}
+                    {data.title}
                   </Typography>
                 </Box>
                 <Box
