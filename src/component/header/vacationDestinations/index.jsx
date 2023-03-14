@@ -1,7 +1,25 @@
 import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 import style from "./style.module.scss";
 
 const VacationDestinations = () => {
+  const [dataChange, setDataChange] = useState([]);
+
+  const getData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/travels");
+      const data = res.data.data;
+      setDataChange(data);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   const Destinations = [
     {
       title: "Bali, Indonesia",
@@ -36,13 +54,14 @@ const VacationDestinations = () => {
       img: "https://images.unsplash.com/photo-1604999333679-b86d54738315?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2050&q=80",
     },
   ];
+
   return (
     <div className={style.container}>
       <h1>Top Vacation Destination</h1>
       <div className={style.destinations}>
-        {Destinations.map((i) => (
+        {dataChange.map((i) => (
           <div className={style.destination}>
-            <img src={i.img} alt="" />
+            <img src={i.images} alt="" />
             <p>
               <b>{i.title}</b>
             </p>

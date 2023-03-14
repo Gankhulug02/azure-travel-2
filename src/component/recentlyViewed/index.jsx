@@ -34,7 +34,7 @@ const RecentlyViewed = () => {
     <Box
       sx={{
         mx: "10%",
-        mt: "300px",
+        mt: "40%",
         display: "flex",
         flexDirection: "column",
         gap: "24px",

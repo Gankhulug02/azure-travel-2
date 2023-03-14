@@ -1,23 +1,27 @@
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
+import axios from "axios";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 import style from "./style.module.scss";
 
 const TopCategories = ({ setIsCategoryDetail, isCategoryDetail }) => {
-  const categories = [
-    { icon: "./images/Beach.svg", title: "All" },
-    { icon: "./images/Beach.svg", title: "Beach" },
-    { icon: "./images/cactus.svg", title: "Desert" },
-    { icon: "./images/mountain.svg", title: "Mountains" },
-    { icon: "./images/building.svg", title: "Cities" },
-    { icon: "./images/house.svg", title: "Houseboats" },
-    { icon: "./images/countryside.svg", title: "Countryside" },
-    { icon: "./images/camping.png", title: "Camping" },
-    { icon: "./images/castle.svg", title: "Castles" },
-    { icon: "./images/skiing.svg", title: "Skiing" },
-    { icon: "./images/Tropical.svg", title: "Tropical" },
-  ];
+  const [dataChange, setDataChange] = useState([]);
+
+  const getData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/categories");
+      const data = res.data.data;
+      setDataChange(data);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <Box
       sx={{
@@ -41,7 +45,7 @@ const TopCategories = ({ setIsCategoryDetail, isCategoryDetail }) => {
           // backgroundColor: "black",
         }}
       >
-        {categories.map((i) => (
+        {dataChange.map((i) => (
           <Box
             onClick={() => {
               setIsCategoryDetail(i.title);
@@ -57,7 +61,7 @@ const TopCategories = ({ setIsCategoryDetail, isCategoryDetail }) => {
                 width: "150px",
               }}
             >
-              <img src={i.icon} alt="" className={style.icon} />
+              <img src={i.images} alt="" className={style.icon} />
               <p>{i.title}</p>
             </Button>
             {/* </NavLink> */}

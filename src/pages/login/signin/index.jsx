@@ -68,18 +68,6 @@ const SignIn = (props) => {
     }
   };
 
-  const logIn = () => {
-    console.log("login");
-
-    // if (email === "" || password === "") {
-    //   setOpen(true);
-    // } else {
-    //   props.handleClose();
-    //   props.setIsLogged("true");
-    //   localStorage.setItem("isLogged", true);
-    // }
-  };
-
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
